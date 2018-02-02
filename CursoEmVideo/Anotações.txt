@@ -1,0 +1,29 @@
+Aula 1 03/10
+1970 nasceu a primeira rede Arpanet
+ncp foi o primeiro protocolo
+1973 foi o TCP e o IP (TCP/IP)
+1977 a internet surgiu
+A internet surgiu para a comunicação entre bases militares
+Em 1990 Tim Bernesli criou o portocolo HTTP, WWW e HTML
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+Aula 2 03/10
+Em 1992 surge o MOSAIC, primeiro navegador
+1994 a Netscape
+1999 os programadores da netscape criou o firefox
+Em 2008 a google criou o googlr chrome
+1995 foi criada a segunda versão do html
+Em 1995 mesmo nasceu a w3c
+Em 1997 foi criada a versão 4
+em 2004 o w3c decidiu criar o xhtml
+Em 2007 a w3c decidiu para com o xhtml e com a proposta que o grupo dos navegadores criaram, decidiram criar o html5
+EM 2008 o HTML5 foi publicado pela primeira vez.
+A versão 5 do html dividiu para que a formatação sej feita pelo CSS e a ações da pagina sejam feitas pelo JS
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+Aula 3 25/10
+o modem é o que faz a modulação e demodulação
+modulação é transformar o sinal digital para analogico 
+demodulação é tranformar o sinal analogico em digital
+Arquivos são enviados por pacotes
+os servidores DNS são responsaveis por encontrar o servidor pelo ip, eles tem uma lista de qual endereço está em qual ip
+
+
