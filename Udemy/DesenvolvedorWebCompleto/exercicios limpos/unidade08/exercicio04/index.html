@@ -4,39 +4,41 @@
     <head>
         <meta charset="ISO-8859-2">
         <title>Curso de HTML5 - Menu Vertical</title>
-        
+
         <style>
 			body {
 				font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
 				font-size:13px;
 			}
-			
+
 			ul {
 				margin:0;padding:0;
-				width:200px;
+
 			}
-			
+
 			li {
 				list-style:none;
+        display: inline-block; /*bloqueia em uma linha do display mas em um bloco */
 			}
-			
+
 			li a {
-				display:block;
+
 				text-decoration:none;
 				color:#FFF;
 				background-color:#09C;
 				margin-bottom:1px;
-				padding:5px 3px;
+				padding:5px 15px;
+        margin-left: -4px;
 			}
-			
+
 			li a:hover {
 				background-color:#6CF
 			}
         </style>
-        
+
         </head>
 
-        <body>        
+        <body>
             <ul>
                 <li><a href="brasil.html">Brasil</a></li>
                 <li><a href="portugal.html">Portugal</a></li>
