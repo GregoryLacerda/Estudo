@@ -1,0 +1,43 @@
+Tipos de Seletores CSS:
+Uma classe é declarada com o .(ponto) na frente. Exemplo: .paragrafo
+Um id é declaro com a # na frente. Exemplo: #janela
+
+ID é uma identificação que criamos a um elemento do HTML. tem como principal característica, ser aplicado a um único elemento do documento web
+Classe também é um nome atribuído a um elemento HTML. Porém pode ser aplicado a mais de um elemento
+
+Exemplo de Seletor em grupo:
+
+p, li, a{
+            font-family: Arial, Helvetica, sans-serife;
+            font-size: 90%;
+            color: #069
+        }
+
+Seletor descendente:
+
+div p{ //Assim será aplicado a formatação apenas ao <p> que está dentro da DIV
+    font-family: Arial, Helvetica, sans-serife;
+    color: #069
+}
+
+Seletor Adjacente:
+
+h2+p{ //a cor será aplicada apenas ao primeiro <p> que estiver depois do <h2>
+  color: #069;
+}
+
+Guias para uma boa programação html:
+
+- Estruturar o html para adicionar apenas o conteúdo
+- Não focar no estilo quando for estruturar o código
+- Escrever um código limpo e eficiente
+- Um código bem estruturado é muito mais fácil de estilizar
+- Indente corretamente as do seu código
+
+Nomeclatura dos IDs e Classes:
+
+- No momento de declarar o nome de um ID, digite o # antes do nome. Exemplo: #principal ou #central.
+- Ao declarar uma classe, digite o . (ponto) antes do nome. Exemplo: .destaque ou .meuItem
+- Não utilize caracteres especiais como acentos ou ç ou espaços nas Nomeclaturas.
+- É possível aplicar mais de um classe para o mesmo elemento. Exemplo: <div class="destaque vermelho"></div> //basta separar por um espaço
+- É possível aplica um ID e uma classe para o mesmo elemento.
