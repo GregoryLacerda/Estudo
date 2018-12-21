@@ -9,13 +9,25 @@
             }
 
             #principal {
-                width:600px;
+                width:730px;
                 margin:0 auto;
+                padding: 10px;
                 background-color:#9C3;
+
+            }
+            #principal::after{/*para resolver o problema em que a principal ficaria menor*/
+              content: "";
+              display: table;
+              clear: both;
+
             }
 
-            #janela {
+            .janela {
+                float:left;
                 width:300px;
+                background-color: #fc3;
+                margin-right: 5px;
+
             }
 
             p {
@@ -25,11 +37,16 @@
     </head>
 
 <body>
-	
+
     <div id="principal">
-    	<div id="janela">
-	        <p>Cafe Townsend's visionary chef leads the way in a culinary revolution. Proclaimed by many to be the best chef in the world today, Chef Bienni blends earthy seasonal flavors and bold ingredients to create exquisite contemporary cuisine. </p>    
+    	<div class="janela">
+	        <p>Cafe Townsend's visionary chef leads the way in a culinary revolution. Proclaimed by many to be the best chef in the world today, Chef Bienni blends earthy seasonal flavors and bold ingredients to create exquisite contemporary cuisine. </p>
         </div>
+
+        <div class="janela">
+  	        <p>Cafe Townsend's visionary chef leads the way in a culinary revolution. Proclaimed by many to be the best chef in the world today, Chef Bienni blends earthy seasonal flavors and bold ingredients to create exquisite contemporary cuisine. </p>
+          </div>
+
     </div>
 
 </body>
