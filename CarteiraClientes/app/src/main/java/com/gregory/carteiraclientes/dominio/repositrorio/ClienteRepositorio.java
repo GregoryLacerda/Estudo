@@ -56,8 +56,8 @@ public class ClienteRepositorio {
         List<Cliente> clientes = new ArrayList<>();
 
         StringBuilder sql = new StringBuilder();
-        sql.append("SELECT CODIGO, NOME, ENDERECO, EMAIL, TELEFONE");
-        sql.append("FROM CLIENTE");
+        sql.append("SELECT CODIGO, NOME, ENDERECO, EMAIL, TELEFONE ");
+        sql.append("FROM CLIENTE ");
 
         Cursor resultado = conexao.rawQuery(sql.toString(), null);
 

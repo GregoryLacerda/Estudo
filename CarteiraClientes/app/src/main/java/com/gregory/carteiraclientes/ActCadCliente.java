@@ -1,6 +1,10 @@
 package com.gregory.carteiraclientes;
 
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -13,6 +17,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.gregory.carteiraclientes.database.DadosOpenHelper;
+import com.gregory.carteiraclientes.dominio.entidades.Cliente;
+import com.gregory.carteiraclientes.dominio.repositrorio.ClienteRepositorio;
+
 import org.w3c.dom.Text;
 
 public class ActCadCliente extends AppCompatActivity {
@@ -21,6 +29,12 @@ public class ActCadCliente extends AppCompatActivity {
     private EditText edtEndereco;
     private EditText edtTelefone;
     private EditText edtEmail;
+    private ConstraintLayout layoutContentActCadCliente;
+    private ClienteRepositorio clienteRepositorio;
+    private SQLiteDatabase conexao;
+    private DadosOpenHelper dadosOpenHelper;
+
+    private Cliente cliente;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +48,63 @@ public class ActCadCliente extends AppCompatActivity {
         edtEndereco = (EditText)findViewById(R.id.edtEndereco);
         edtEmail = (EditText)findViewById(R.id.edtEmail);
         edtTelefone = (EditText)findViewById(R.id.edtTelefone);
+
+        layoutContentActCadCliente = (ConstraintLayout)findViewById(R.id.layoutContentActCadCliente);
+
+        criaConexao();
     }
 
-    private void validaCampos(){
+    private void criaConexao(){
+
+        try {
+
+            dadosOpenHelper = new DadosOpenHelper(this);
+            conexao = dadosOpenHelper.getWritableDatabase();
+
+            Snackbar.make(layoutContentActCadCliente, R.string.message_conexao_criada_com_sucesso, Snackbar.LENGTH_LONG ).setAction(R.string.acti_ok, null).show();
+
+            clienteRepositorio = new ClienteRepositorio(conexao);
+
+        }catch (SQLException ex){
+
+            AlertDialog.Builder dlg = new AlertDialog.Builder(this);
+            dlg.setTitle(R.string.title_erro);
+            dlg.setMessage(ex.getMessage());
+            dlg.setNeutralButton(R.string.acti_ok, null);
+            dlg.show();
+
+        }
+
+    }
+
+
+    private void confirmar(){
+
+        cliente = new Cliente();
+
+        if (validaCampos() == false){
+
+            try{
+
+            clienteRepositorio.inserir(cliente);
+
+                finish();
+
+            }catch (SQLException ex){
+
+                AlertDialog.Builder dlg = new AlertDialog.Builder(this);
+                dlg.setTitle(R.string.title_erro);
+                dlg.setMessage(ex.getMessage());
+                dlg.setNeutralButton(R.string.acti_ok, null);
+                dlg.show();
+
+            }
+        }
+
+    }
+
+
+    private boolean validaCampos(){
 
         boolean res = false;
 
@@ -44,6 +112,11 @@ public class ActCadCliente extends AppCompatActivity {
         String endereco = edtEndereco.getText().toString();
         String email = edtEmail.getText().toString();
         String telefone = edtTelefone.getText().toString();
+
+        cliente.nome = nome;
+        cliente.endereco = endereco;
+        cliente.email = email;
+        cliente.telefone = telefone;
 
         if (res = isCampoVazio(nome)){
             edtNome.requestFocus();
@@ -66,6 +139,8 @@ public class ActCadCliente extends AppCompatActivity {
             dlg.setNeutralButton(R.string.acti_ok, null);
             dlg.show();
         }
+
+        return res;
     }
 
     // função para validar se os campos estão vazios incluindo se só tem espaço com valor.trim
@@ -106,16 +181,16 @@ public class ActCadCliente extends AppCompatActivity {
         switch(id){
             case R.id.action_ok:
                 //metodo para exibir uma mensagem de teste quando o ok for selecionada
-                Toast.makeText(this, "Botaão ok Selecionado", Toast.LENGTH_SHORT ).show();
+                //Toast.makeText(this, "Botaão ok Selecionado", Toast.LENGTH_SHORT ).show();
 
-                //Validações dos campos do cadastro cliente
-                validaCampos();
+                //Validações dos campos do cadastro cliente e a inserção dos valor no banco
+                confirmar();
 
             break;
 
             case R.id.action_cancelar:
                 //metodo para exibir uma mensagem de teste quando o cancelar for selecionada
-                Toast.makeText(this, "Botaão cancelar Selecionado", Toast.LENGTH_SHORT ).show();
+                //Toast.makeText(this, "Botaão cancelar Selecionado", Toast.LENGTH_SHORT ).show();
 
                 //Finalizar a activity
                 finish();

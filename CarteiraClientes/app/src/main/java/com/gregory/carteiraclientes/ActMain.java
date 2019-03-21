@@ -9,20 +9,26 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.gregory.carteiraclientes.database.DadosOpenHelper;
+import com.gregory.carteiraclientes.dominio.entidades.Cliente;
+import com.gregory.carteiraclientes.dominio.repositrorio.ClienteRepositorio;
+
+import java.util.List;
 
 public class ActMain extends AppCompatActivity {
 
     private RecyclerView lstDados;
     private FloatingActionButton fab;
     private ConstraintLayout layoutContentMain;
-
     private SQLiteDatabase conexao;
     private DadosOpenHelper dadosOpenHelper;
+    private ClienteAdapter clienteAdapter;
+    private ClienteRepositorio clienteRepositorio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +43,20 @@ public class ActMain extends AppCompatActivity {
         layoutContentMain = (ConstraintLayout)findViewById(R.id.layoutContentMain);
 
         criaConexao();
+
+        lstDados.setHasFixedSize(true);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        lstDados.setLayoutManager(linearLayoutManager);
+
+        clienteRepositorio = new ClienteRepositorio(conexao);
+
+        List<Cliente> dado = clienteRepositorio.buscarTodos();
+
+        clienteAdapter = new ClienteAdapter(dado);
+
+        lstDados.setAdapter(clienteAdapter);
+
 
         /*fab.setOnClickListener(new View.OnClickListener() {
             @Override
