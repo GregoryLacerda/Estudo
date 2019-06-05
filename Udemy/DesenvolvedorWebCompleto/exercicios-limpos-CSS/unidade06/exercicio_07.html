@@ -54,13 +54,31 @@
             article h1 { font-size:3em }
             article h2 { font-size:2em }
             article h3 { font-size:1.5em }
-            article p   { 
-                font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; 
-                font-size:1em; 
+            article p   {
+                font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+                font-size:1em;
                 color:rgb(102,102,102);
                 line-height:1.5;
-                margin-bottom:20px; 
+                margin-bottom:20px;
             }
+
+            section.textoApresentacao img{
+              float: left;
+              margin-right: 0.5em;
+              margin-bottom: 1em;
+            }
+            section.textoMedio{
+              clear: both;
+            }
+            section.textoMedio p:first-of-type::first-letter{/*está escrito que a alteração será realizada na primeira litra do paragrafo*/
+              font-size: 4em;
+              line-height: 0.8;
+              margin: 0 5px 0 0;
+              float: left;
+              font-family: Georgia, "Times New Roman", serif;
+            }
+
+
         </style>
 
 
