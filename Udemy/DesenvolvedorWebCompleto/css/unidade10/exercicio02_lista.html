@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Curso de CSS</title>
+        <style>
+            body {
+                font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+                font-size:14px;
+            }
+
+            /*Formas para aplicar coisas a um elemento especifico*/
+            li:first-child{
+                color: lightseagreen;
+            }
+            li:last-child{
+                color: maroon;
+            }
+            li:nth-child(3){
+                color: red;
+            }
+            /*As cores só dos elmentos impares odd = impar e even = par*/
+            li:nth-child(odd){
+                color: royalblue;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <ul>
+            <li>Brasil</li>
+            <li>Portugal</li>
+            <li>Angola</li>
+            <li>Moçambique</li>
+            <li>Cabo Verde</li>
+        </ul>  
+
+    </body>
+</html>
